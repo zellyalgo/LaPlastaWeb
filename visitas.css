@@ -1,0 +1,67 @@
+/* ── Página Visitas ── */
+
+html:has(body.page-visitas) {
+    overflow: auto !important;
+    height: auto !important;
+}
+
+body.page-visitas {
+    background: #da453a;
+    overflow: auto !important;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header estático */
+body.page-visitas .site-nav {
+    position: static;
+    width: 100%;
+}
+
+/* Footer estático */
+body.page-visitas .site-footer {
+    position: static;
+    margin-top: auto;
+}
+
+/* Título blanco */
+body.page-visitas .site-name,
+body.page-visitas .site-name:hover {
+    color: #fff;
+}
+
+/* ── Layout principal ── */
+.visitas-main {
+    padding: 60px 0 80px;
+    flex: 1;
+}
+
+.visitas-subtitle {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-align: right;
+}
+
+/* ── Texto ── */
+.visitas-text {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #fff;
+}
+
+/* ── Fotos ── */
+.visitas-foto {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ── Footer: texto blanco ── */
+body.page-visitas .site-footer a {
+    color: #fff;
+}

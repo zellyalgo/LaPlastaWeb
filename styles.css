@@ -1,0 +1,163 @@
+/* ── Reset mínimo ── */
+html, body {
+    background: #ffffff;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* ── SVG filtros (oculto) ── */
+.svg-filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* ── Header ── */
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    padding: 22px 52px;
+    width: 100%;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.hamburger span {
+    display: block;
+    width: 38px;
+    height: 3px;
+    background: #111;
+    border-radius: 2px;
+}
+
+.site-name {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700;
+    color: #111;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.site-name:hover {
+    color: #111;
+    text-decoration: none;
+}
+
+/* ── Blobs ── */
+.blobs-stage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.blob {
+    cursor: pointer;
+    user-select: none;
+}
+
+.blob img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.35s ease;
+}
+
+.blob:hover img {
+    transform: scale(1.05) rotate(1.5deg);
+}
+
+/* Tamaños individuales */
+.blob--yellow {
+    width: clamp(50px, 5.5vw, 85px);
+}
+
+.blob--blue {
+    width: clamp(160px, 22vw, 290px);
+}
+
+.blob--red {
+    width: clamp(150px, 20vw, 265px);
+}
+
+.blob--white {
+    width: clamp(155px, 21vw, 275px);
+}
+
+/* ── Footer ── */
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+.site-footer a {
+    font-size: 0.78rem;
+    color: #111;
+    text-decoration: none;
+    letter-spacing: 0.09em;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ── Tooltip a mano ── */
+#cursor-tooltip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    transform: translate(-50%, 18px) scale(0.9);
+}
+
+#cursor-tooltip.visible {
+    opacity: 1;
+    transform: translate(-50%, 18px) scale(1);
+}
+
+.tooltip-bubble {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagen del rótulo dibujado a mano */
+#tooltip-img {
+    display: block;
+    height: 64px;
+    width: auto;
+    pointer-events: none;
+}
+
+/* Texto encima de la imagen */
+#tooltip-text {
+    position: absolute;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #111;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}

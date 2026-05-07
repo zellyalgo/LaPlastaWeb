@@ -1,0 +1,67 @@
+/* ── Página Quiénes somos ── */
+
+html:has(body.page-quienes) {
+    overflow: auto !important;
+    height: auto !important;
+}
+
+body.page-quienes {
+    background: #ffde5a;
+    overflow: auto !important;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header estático */
+body.page-quienes .site-nav {
+    position: static;
+    width: 100%;
+}
+
+/* Footer estático */
+body.page-quienes .site-footer {
+    position: static;
+    margin-top: auto;
+}
+
+/* Título oscuro (fondo claro) */
+body.page-quienes .site-name,
+body.page-quienes .site-name:hover {
+    color: #111;
+}
+
+/* ── Layout principal ── */
+.quienes-main {
+    padding: 10px 0 80px;
+    flex: 1;
+}
+
+.quienes-subtitle {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 500;
+    color: #111;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-align: right;
+}
+
+/* ── Foto ── */
+.quienes-foto {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ── Texto ── */
+.quienes-text {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #111;
+}
+
+/* ── Footer: texto oscuro ── */
+body.page-quienes .site-footer a {
+    color: #111;
+}

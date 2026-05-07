@@ -1,0 +1,96 @@
+/* ── Página Teatros ── */
+
+/* Fondo azul, scroll habilitado — sobreescribe overflow:hidden y height:100% global */
+html:has(body.page-teatros) {
+    overflow: auto !important;
+    height: auto !important;
+}
+
+body.page-teatros {
+    background: #4659b8;
+    overflow: auto !important;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header estático en teatros (no fixed) */
+body.page-teatros .site-nav {
+    position: static;
+    width: 100%;
+}
+
+/* Footer estático en teatros (no fixed) */
+body.page-teatros .site-footer {
+    position: static;
+    margin-top: auto;
+}
+
+/* El título hereda el estilo pero en blanco */
+body.page-teatros .site-name {
+    color: #fff;
+}
+
+body.page-teatros .site-name:hover {
+    color: #fff;
+}
+
+/* ── Layout principal ── */
+.teatros-main {
+    padding: 60px 0 80px;
+    flex: 1;
+}
+
+/* ── Hero: blob + título sección ── */
+.teatros-blob {
+    width: clamp(80px, 12vw, 160px);
+    height: auto;
+    display: block;
+}
+
+.teatros-subtitle {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-align: right;
+}
+
+/* ── Texto ── */
+.teatros-text {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #fff;
+}
+
+/* ── Vídeo responsive 16:9 ── */
+.teatros-video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.teatros-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ── Carrusel ── */
+.teatros-carousel-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ── Footer en azul: texto blanco ── */
+body.page-teatros .site-footer a {
+    color: #fff;
+}
