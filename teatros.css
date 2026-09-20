@@ -72,6 +72,7 @@ body.page-teatros .site-name:hover {
     padding-bottom: 56.25%; /* 16:9 */
     border-radius: 6px;
     overflow: hidden;
+    padding-top: 15px;
 }
 
 .teatros-video-wrapper iframe {
