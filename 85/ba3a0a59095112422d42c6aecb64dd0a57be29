@@ -1,0 +1,18 @@
+contacto.css
+  h_11fa030ac5a0be 1-108
+contacto.html
+  h_11fa030ac5a0be 1-86
+gracias.html
+  h_11fa030ac5a0be 1-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "85ba3a0a59095112422d42c6aecb64dd0a57be29",
+  "prompts": {},
+  "humans": {
+    "h_11fa030ac5a0be": {
+      "author": "Sergio Redondo <sergior@ext.inditex.com>"
+    }
+  }
+}
