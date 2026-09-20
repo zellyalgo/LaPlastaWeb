@@ -119,6 +119,12 @@ html, body {
     text-decoration: underline;
 }
 
+.footer-sep {
+    font-size: 0.78rem;
+    color: #111;
+    margin: 0 0.5rem;
+}
+
 /* ── Tooltip a mano ── */
 #cursor-tooltip {
     position: fixed;
