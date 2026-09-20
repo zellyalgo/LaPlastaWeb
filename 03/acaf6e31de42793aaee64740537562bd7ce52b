@@ -1,0 +1,24 @@
+index.html
+  h_11fa030ac5a0be 91
+quienes.html
+  h_11fa030ac5a0be 35-37,41,43,46,59
+talleres.html
+  h_11fa030ac5a0be 39,42,58,61,64,130
+teatros.css
+  h_11fa030ac5a0be 75
+teatros.html
+  h_11fa030ac5a0be 110
+visitas.html
+  h_11fa030ac5a0be 39,65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "03acaf6e31de42793aaee64740537562bd7ce52b",
+  "prompts": {},
+  "humans": {
+    "h_11fa030ac5a0be": {
+      "author": "Sergio Redondo <sergior@ext.inditex.com>"
+    }
+  }
+}
