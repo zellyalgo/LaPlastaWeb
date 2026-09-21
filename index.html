@@ -57,7 +57,7 @@
     <main class="blobs-stage">
 
         <!-- Contenedor que se ajusta al ancho real de los 3 blobs -->
-        <div class="d-flex align-items-end" style="gap: 8rem;">
+        <div class="blobs-desktop d-flex align-items-end" style="gap: 8rem;">
 
             <!-- Azul -->
             <a href="teatros.html" class="blob blob--blue" data-label="Teatros" data-tooltip-img="images/TeatrosC.png">
@@ -79,6 +79,26 @@
                 </a>
             </div>
 
+        </div>
+
+        <!-- Vista móvil: cada pelota en su fila con el texto encima -->
+        <div class="blobs-mobile">
+            <a href="teatros.html" class="blob-row">
+                <span class="blob-row__label">Teatros</span>
+                <img class="blob-row__img" src="images/blob-blue.png" alt="Teatros">
+            </a>
+            <a href="visitas.html" class="blob-row">
+                <span class="blob-row__label">Visitas</span>
+                <img class="blob-row__img" src="images/blob-red.png" alt="Visitas">
+            </a>
+            <a href="quienes.html" class="blob-row">
+                <span class="blob-row__label">Quiénes somos</span>
+                <img class="blob-row__img" src="images/blob-yellow.png" alt="Quiénes somos">
+            </a>
+            <a href="talleres.html" class="blob-row">
+                <span class="blob-row__label">Talleres</span>
+                <img class="blob-row__img" src="images/blob-white.png" alt="Talleres">
+            </a>
         </div>
 
     </main>
