@@ -1,0 +1,21 @@
+index.html
+  s_3c04e01d941ed2::t_5a2179649b4045 60,84-103
+styles.css
+  s_3c04e01d941ed2::t_7f03e619e83e03 170-230
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c58ef70d5ca86fd86cd54b832af3adcc787a3db3",
+  "prompts": {},
+  "sessions": {
+    "s_3c04e01d941ed2": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "d2223821-46d8-4267-ba40-755fffc16283",
+        "model": "unknown"
+      },
+      "human_author": "Sergio Redondo <sergior@ext.inditex.com>"
+    }
+  }
+}
