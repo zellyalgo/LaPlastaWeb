@@ -1,0 +1,33 @@
+contacto.html
+  s_984137a14b5f94::t_74db8ab2996583 22,76,78-94
+footer.css
+  s_984137a14b5f94::t_5135f784e52ef7 1-38
+gracias.html
+  s_984137a14b5f94::t_58bb4f44a97030 22,54,57-71
+index.html
+  s_984137a14b5f94::t_ddd08f015230e9 21,111,114-128
+quienes.html
+  s_984137a14b5f94::t_b6d1242605bca2 22,59,62-76
+talleres.html
+  s_984137a14b5f94::t_06ff0aab6d96cb 22,130,133-147
+teatros.html
+  s_984137a14b5f94::t_cc33633bee20ec 22,110,113-127
+visitas.html
+  s_984137a14b5f94::t_d6ecac1b99ee8a 22,65,68-82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "27b3a7e541f2a1ce95acc6ba46d59f021d590f8a",
+  "prompts": {},
+  "sessions": {
+    "s_984137a14b5f94": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "85776091-c8f5-4eef-9d8c-c817171c1d7e",
+        "model": "unknown"
+      },
+      "human_author": "Sergio Redondo <sergior@ext.inditex.com>"
+    }
+  }
+}
