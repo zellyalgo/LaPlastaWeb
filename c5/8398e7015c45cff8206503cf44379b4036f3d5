@@ -1,0 +1,39 @@
+contacto.html
+  s_984137a14b5f94::t_bdbc009d3962f2 94-99
+gracias.html
+  s_984137a14b5f94::t_375613c13cf898 72-77
+index.html
+  s_b38c30f216ec21::t_037473a58c7fe9 129-136
+quienes.html
+  s_984137a14b5f94::t_aece382863bba8 77-82
+talleres.html
+  s_984137a14b5f94::t_c9fdcbcaa308ca 148-153
+teatros.html
+  s_984137a14b5f94::t_112b8e5ddd7204 128-133
+visitas.html
+  s_984137a14b5f94::t_94d30b34d8b4b1 83-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "c58398e7015c45cff8206503cf44379b4036f3d5",
+  "prompts": {},
+  "sessions": {
+    "s_984137a14b5f94": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "85776091-c8f5-4eef-9d8c-c817171c1d7e",
+        "model": "unknown"
+      },
+      "human_author": "Sergio Redondo <sergior@ext.inditex.com>"
+    },
+    "s_b38c30f216ec21": {
+      "agent_id": {
+        "tool": "github-copilot-cli",
+        "id": "f38c153a-c879-446b-a612-90ed3e3598a7",
+        "model": "unknown"
+      },
+      "human_author": "Sergio Redondo <sergior@ext.inditex.com>"
+    }
+  }
+}
