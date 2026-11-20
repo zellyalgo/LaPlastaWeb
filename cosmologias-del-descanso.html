@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zonas de Descanso URJC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animación del resplandor de los puntos naranjas */
+        .hotspot-pulse {
+            box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7);
+            animation: pulse-orange 2s infinite;
+        }
+        @keyframes pulse-orange {
+            0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(249, 115, 22, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
+        }
+        /* Animación suave al abrir la ventana modal */
+        .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95) translate(-50%, -50%); }
+            to { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 m-0 p-0 flex items-center justify-center min-h-screen">
+
+    <!-- Contenedor Principal del Mapa -->
+    <div class="relative w-full max-w-6xl mx-auto border-4 border-slate-800 rounded-lg overflow-hidden shadow-2xl">
+        <!-- Imagen de Fondo (Pizarra) -->
+        <img src="fondo.webp" alt="Mapa Pizarra" class="w-full h-auto block" onerror="this.src='https://via.placeholder.com/1200x800/1e293b/ffffff?text=Falta+fondo.webp'">
+
+        <!-- Contenedor para los puntos (se rellenan con JS) -->
+        <div id="hotspots-container"></div>
+    </div>
+
+    <!-- Fondo Oscuro del Modal -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-80 hidden z-40 transition-opacity"></div>
+    
+    <!-- Ventana Emergente (Modal) -->
+    <div id="modal-card" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-11/12 max-w-5xl h-[85vh] md:h-[650px] flex flex-col md:flex-row rounded-xl shadow-2xl overflow-hidden hidden z-50">
+        
+        <!-- Botón Cerrar (X) -->
+        <button onclick="closeModal()" class="absolute top-4 right-4 bg-white/70 hover:bg-slate-200 text-slate-900 rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold z-10 transition-colors shadow">✕</button>
+
+        <!-- Sección Izquierda: Imágenes y Carrusel -->
+        <div class="w-full md:w-1/2 bg-black relative flex items-center justify-center min-h-[300px]">
+            <img id="modal-image" src="" alt="Imagen del punto" class="max-w-full max-h-full object-contain">
+            
+            <!-- Flechas de navegación -->
+            <button id="btn-prev" onclick="prevImage()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/90 hidden text-lg">❮</button>
+            <button id="btn-next" onclick="nextImage()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/90 hidden text-lg">❯</button>
+            
+            <!-- Contador -->
+            <div id="carousel-indicator" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-4 py-1.5 rounded-full text-sm hidden font-medium tracking-wide">1 / 4</div>
+        </div>
+
+        <!-- Sección Derecha: Textos y Botones -->
+        <div class="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto bg-slate-50 flex flex-col">
+            <h2 id="modal-title" class="text-3xl font-extrabold text-slate-900 mb-6 leading-tight">Título</h2>
+            <div id="modal-text" class="text-slate-700 text-lg leading-relaxed flex-grow">Texto descriptivo...</div>
+            
+            <!-- Botón dinámico -->
+            <a id="modal-link" href="#" target="_blank" class="mt-8 bg-pink-600 hover:bg-pink-700 text-white font-bold py-4 px-6 rounded-lg text-center transition-colors hidden shadow-lg text-lg">
+                Visita guiada
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // --- LOS 6 PUNTOS INTERACTIVOS ---
+        const hotspotsData = [
+            {
+                id: 1,
+                top: "29%", left: "12%",
+                title: "Sonoridades del contradescanso",
+                text: "Este ejercicio propone una escucha crítica del entorno universitario a partir de la identificación y registro de aquellos sonidos que actúan como contradescanso: ruidos, vibraciones, murmullos, motores, alarmas, conversaciones o cualquier señal acústica que interrumpa la posibilidad de calma.<br><br>A través de la aplicación Phonopaper, estos sonidos son traducidos en imágenes, generando una especie de partitura visual del agotamiento institucional. Cada sonido registrado se convierte así en un dibujo del ritmo acelerado que atraviesa la vida académica.",
+                images: ["carrouselSonoro1.webp", "carrouselSonoro2.webp", "carrouselSonoro3.webp", "carrouselSonoro4.webp"]
+            },
+            {
+                id: 2,
+                top: "48%", left: "12%",
+                title: "Espacios para no hacer nada",
+                text: "Espacios para no hacer nada es un recorrido de mediación autónoma diseñado por estudiantes de 4º curso de la asignatura Taller de Fotografía y Videoarte del Grado en Bellas Artes. A través de un tour virtual, se invita a recorrer distintos espacios del campus seleccionados por su potencial como lugares de descanso y pausa.<br><br>La visita está pensada para realizarse de forma no presencial, desde cualquier dispositivo digital. Su propósito es ofrecer al usuario la libertad de navegar y habitar estos espacios desde una lógica distinta a la de la hiperproductividad académica. El formato propone una experiencia de exploración lenta, donde el acto de recorrer se aproxima más al ocio y la deriva, incorporando una mirada cercana a la de los videojuegos y la navegación interactiva.",
+                images: ["espacioNada.webp"],
+                url: "https://app.lapentor.com/sphere/visita-guiada-urjc?scene=68ee9b7fcbcf1d98b90b1b89",
+                btnText: "Visita guiada"
+            },
+            {
+                id: 3,
+                top: "75%", left: "12%",
+                title: "Gloshhhhhhario",
+                text: "En primer lugar, se realizó una exploración por los espacios de la facultad con el propósito de elaborar un listado de palabras vinculadas al concepto de descanso.<br><br>Posteriormente, estas palabras fueron introducidas en una herramienta de Inteligencia Artificial, que generó imágenes a partir de ellas, proponiendo una lectura visual del descanso en el contexto universitario.",
+                images: Array.from({length: 8}, (_, i) => `carrouselglosh${i + 1}.webp`)
+            },
+            {
+                id: 4,
+                top: "35%", left: "75%",
+                title: "Un archivo desde el smartphone",
+                text: "Como aproximación al tema, realizamos una dinámica que consistió en la revisión de nuestras galerías personales. Bajo la premisa “no estar haciendo nada”, seleccionamos aquellas imágenes nos interpelaban y descartamos las que no lo hacían. Además, escribimos una o dos palabras justificando por qué cada imagen escogida nos conectaba con la idea de descanso como resistencia pasiva, entendida como una forma de inacción en el arte contemporáneo.",
+                images: ["archivo.webp"],
+                url: "https://padlet.com/marig01/cosmologiasdeldescanso",
+                btnText: "Ir al archivo"
+            },
+            {
+                id: 5,
+                top: "45%", left: "88%",
+                title: "Página web URJC",
+                text: "Intervención de la página web de la URJC con fotografías y noticias acerca de barreras arquitectónicas, desbordamientos institucionales, tensiones y otras cuestiones que nos apelan en nuestro día a día.",
+                images: ["URJC.webp"]
+            },
+            {
+                id: 6,
+                top: "62%", left: "83%",
+                title: "Arqueología del descanso",
+                text: "Este ejercicio consistió en un archivo de imágenes que registraron las huellas del descanso. Sedimentos fósiles que evocaron pausas, esperas y vacíos que, en otro tiempo, ocuparon los cuerpos.",
+                images: Array.from({length: 7}, (_, i) => `arqueologia${i + 1}.webp`)
+            }
+        ];
+
+        // --- MOTOR DEL CÓDIGO ---
+        const container = document.getElementById('hotspots-container');
+        let currentImages = [];
+        let currentIndex = 0;
+
+        // 1. Dibujar los puntos sobre el mapa
+        hotspotsData.forEach(spot => {
+            const dot = document.createElement('div');
+            dot.className = 'absolute w-4 h-4 bg-orange-500 rounded-full cursor-pointer hotspot-pulse z-10 hover:scale-150 transition-transform';
+            dot.style.top = spot.top;
+            dot.style.left = spot.left;
+            dot.onclick = () => openModal(spot);
+            container.appendChild(dot);
+        });
+
+        // 2. Abrir la ventana con la info correcta
+        function openModal(spot) {
+            currentImages = spot.images;
+            currentIndex = 0;
+            
+            // Textos
+            document.getElementById('modal-title').innerHTML = spot.title;
+            document.getElementById('modal-text').innerHTML = spot.text;
+            
+            // Mostrar u ocultar el botón externo (Padlet o Visita guiada)
+            const linkBtn = document.getElementById('modal-link');
+            if(spot.url) {
+                linkBtn.href = spot.url;
+                // Usa el texto configurado, o uno por defecto si no lo pusiste
+                linkBtn.innerText = spot.btnText || "Visitar enlace";
+                linkBtn.style.display = 'block';
+            } else {
+                linkBtn.style.display = 'none';
+            }
+
+            // Cargar la primera imagen
+            updateImage();
+
+            // Gestionar botones del carrusel
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+            const indicator = document.getElementById('carousel-indicator');
+
+            if(currentImages.length > 1) {
+                btnPrev.style.display = 'flex';
+                btnNext.style.display = 'flex';
+                indicator.style.display = 'block';
+            } else {
+                btnPrev.style.display = 'none';
+                btnNext.style.display = 'none';
+                indicator.style.display = 'none';
+            }
+
+            // Hacer visible la ventana con animación
+            document.getElementById('modal-overlay').classList.remove('hidden');
+            const modal = document.getElementById('modal-card');
+            modal.classList.remove('hidden');
+            modal.classList.add('modal-enter');
+        }
+
+        // 3. Cerrar la ventana
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.add('hidden');
+            const modal = document.getElementById('modal-card');
+            modal.classList.add('hidden');
+            modal.classList.remove('modal-enter');
+        }
+
+        // 4. Cambiar fotos en el carrusel
+        function updateImage() {
+            const imgElement = document.getElementById('modal-image');
+            imgElement.src = currentImages[currentIndex];
+            
+            imgElement.onerror = function() {
+                this.src = `https://via.placeholder.com/800x600/f43f5e/ffffff?text=Falta+imagen:+${currentImages[currentIndex]}`;
+            };
+            
+            if(currentImages.length > 1) {
+                document.getElementById('carousel-indicator').innerText = `${currentIndex + 1} / ${currentImages.length}`;
+            }
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateImage();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            updateImage();
+        }
+
+        // 5. Extras: Cerrar al hacer clic fuera o con la tecla ESC
+        document.getElementById('modal-overlay').onclick = closeModal;
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
